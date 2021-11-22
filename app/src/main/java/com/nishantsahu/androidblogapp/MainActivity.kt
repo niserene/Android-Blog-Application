@@ -2,6 +2,7 @@ package com.nishantsahu.androidblogapp
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -13,14 +14,24 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
+import com.nishantsahu.androidblogapp.databinding.ActivityMainBinding
+import com.nishantsahu.androidblogapp.ui.auth.AuthViewModel
+import com.nishantsahu.api.models.entities.User
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var authViewModel: AuthViewModel
+    private var binding: ActivityMainBinding?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
+        setContentView(binding?.root)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -35,6 +46,24 @@ class MainActivity : AppCompatActivity() {
         ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        authViewModel.user.observe({lifecycle}){
+            updateMenu(it)
+            navController.navigateUp()
+        }
+
+    }
+
+    private fun updateMenu(user: User?){
+        when(user){
+            is User ->{
+                binding?.navView?.menu?.clear()
+                binding?.navView?.inflateMenu(R.menu.menu_main_user)
+            }
+            else ->{
+                binding?.navView?.inflateMenu(R.menu.menu_main_guest)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

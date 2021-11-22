@@ -5,6 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/side_nav_bar">
 
+    <fragment
+        android:id="@+id/authFragmentNavHost"
+        app:navGraph = "@navigation/navigation_auth"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/authTabLayout"
         android:layout_width="match_parent"

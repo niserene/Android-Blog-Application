@@ -22,5 +22,5 @@
         app:itemTextColor="@color/color_lither_grey"
         android:background="@drawable/side_nav_bar"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/menu_main_guest" />
 </androidx.drawerlayout.widget.DrawerLayout>
