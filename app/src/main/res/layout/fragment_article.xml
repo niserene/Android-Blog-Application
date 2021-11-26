@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/color_primary"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        tools:text="Title of the article"
+        android:maxLines="2"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:id="@+id/authorImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_user_avatar"
+            android:background="@color/color_primary" />
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+            <TextView
+                android:id="@+id/authorTextView"
+                tools:text="username"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:fontFamily="@font/amaranth"
+                android:textColor="@color/color_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/dateTextView"
+                tools:text="24 nov,2021"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/color_lither_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/bodyTextView"
+            android:layout_marginTop="25dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Body of the article"
+            android:textColor="@color/color_lither_white"
+            android:textSize="18sp"
+            android:fontFamily="@font/titillium_web_semibold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
+
+</LinearLayout>

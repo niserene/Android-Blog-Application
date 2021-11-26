@@ -5,14 +5,14 @@ import com.nishantsahu.api.models.responses.ArticleResponse
 import com.nishantsahu.api.models.responses.ArticlesResponse
 import com.nishantsahu.api.models.responses.ProfileResponse
 import com.nishantsahu.api.models.responses.UserResponse
-import jdk.nashorn.internal.objects.annotations.Getter
+import retrofit2.Response
 import retrofit2.http.*
-import javax.xml.ws.Response
+
 
 interface BlogAuthApi {
 
     @GET("user")
-    suspend fun getCurrentUser():Response<UserResponse>
+    suspend fun getCurrentUser(): Response<UserResponse>
 
     @PATCH("user")
     suspend fun updateCurrentUser(

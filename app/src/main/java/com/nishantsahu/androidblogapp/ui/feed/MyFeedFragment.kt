@@ -13,36 +13,42 @@ import com.nishantsahu.androidblogapp.R
 import com.nishantsahu.androidblogapp.databinding.FragmentFeedBinding
 import com.nishantsahu.api.models.entities.Article
 
-class GlobalFeedFragment: Fragment() {
+class MyFeedFragment:Fragment() {
 
-    private var binding: FragmentFeedBinding ?= null
+    private var binding: FragmentFeedBinding?= null
     private lateinit var viewModel: FeedViewModel
     private lateinit var feedAdapter: ArticleFeedAdapter
     private lateinit var articlesList : ArrayList<Article>
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         articlesList = ArrayList()
         viewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
-        feedAdapter = ArticleFeedAdapter(articlesList){openArticle(it)}
+        feedAdapter = ArticleFeedAdapter(articlesList){ openArticle(it)}
+
         binding = FragmentFeedBinding.inflate(inflater, container, false)
+
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding?.feedRview?.layoutManager = LinearLayoutManager(context)
         binding?.feedRview?.adapter = feedAdapter
-        viewModel.fetchGlobalFeed()
+        viewModel.fetchMyFeed()
         viewModel.feed.observe({ lifecycle }) {
             articlesList.clear()
             articlesList.addAll(it)
             feedAdapter.notifyDataSetChanged()
         }
-        return binding?.root
     }
 
     fun openArticle(articleId: String){
         findNavController().navigate(
-                R.id.global_feed_openArticle,
+                R.id.my_feed_openArticle,
                 bundleOf(
                         Pair(resources.getString(R.string.arg_article_id), articleId)
                 )
@@ -53,4 +59,5 @@ class GlobalFeedFragment: Fragment() {
         super.onDestroyView()
         binding = null
     }
+
 }

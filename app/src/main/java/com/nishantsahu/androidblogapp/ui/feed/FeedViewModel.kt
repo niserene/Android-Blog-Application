@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nishantsahu.androidblogapp.data.ArticlesRepo
+import com.nishantsahu.api.BlogApiClient
 import com.nishantsahu.api.models.entities.Article
 import kotlinx.coroutines.launch
 
@@ -22,6 +23,15 @@ class FeedViewModel:ViewModel() {
             articles.body()?.let {
                 _feed.postValue(it.articles)
                 Log.d("FEED", "feed fetched ${it.articlesCount}")
+            }
+        }
+    }
+
+    fun fetchMyFeed(){
+        viewModelScope.launch {
+            val articles = ArticlesRepo.getMyFeed()
+            articles.body()?.let {
+                _feed.postValue(it.articles)
             }
         }
     }

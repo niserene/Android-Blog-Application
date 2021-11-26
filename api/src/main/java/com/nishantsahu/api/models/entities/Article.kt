@@ -25,5 +25,7 @@ data class Article(
     @Json(name = "title")
     val title: String,
     @Json(name = "updatedAt")
-    val updatedAt: String
+    val updatedAt: String,
+    @Json(name = "image")
+    val image:String
 )

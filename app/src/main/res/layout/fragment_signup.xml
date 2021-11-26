@@ -7,6 +7,14 @@
     android:layout_gravity="center">
 
     <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:hint="username"
+        android:textColorHint="@color/color_secondary"
+        android:textColor="@color/color_lither_grey"
+        android:layout_height="wrap_content"/>
+
+    <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:hint="email"
@@ -22,16 +30,8 @@
         android:textColor="@color/color_lither_grey"
         android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="match_parent"
-        android:hint="username"
-        android:textColorHint="@color/color_secondary"
-        android:textColor="@color/color_lither_grey"
-        android:layout_height="wrap_content"/>
-
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/signupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
