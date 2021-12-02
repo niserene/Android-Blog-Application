@@ -2,10 +2,7 @@ package com.nishantsahu.api.services
 
 import com.nishantsahu.api.models.requests.LoginRequest
 import com.nishantsahu.api.models.requests.SignupRequest
-import com.nishantsahu.api.models.responses.ArticleResponse
-import com.nishantsahu.api.models.responses.ArticlesResponse
-import com.nishantsahu.api.models.responses.TagsResponse
-import com.nishantsahu.api.models.responses.UserResponse
+import com.nishantsahu.api.models.responses.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -32,6 +29,11 @@ interface BlogApi {
     suspend fun getArticleBySlug(
             @Path("slug") slug:String
     ): Response<ArticleResponse>
+
+    @GET("profiles/{username}")
+    suspend fun getProfile(
+            @Path("username")username:String
+    ): Response<ProfileResponse>
 
     @GET("tags")
     suspend fun getTags() : Response<TagsResponse>

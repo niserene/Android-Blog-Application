@@ -27,7 +27,11 @@ class GlobalFeedFragment: Fragment() {
     ): View? {
         articlesList = ArrayList()
         viewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
-        feedAdapter = ArticleFeedAdapter(articlesList){openArticle(it)}
+        feedAdapter = ArticleFeedAdapter(
+                articlesList = articlesList,
+                {openArticle(it)},
+                {openProfile(it)}
+        )
         binding = FragmentFeedBinding.inflate(inflater, container, false)
         binding?.feedRview?.layoutManager = LinearLayoutManager(context)
         binding?.feedRview?.adapter = feedAdapter
@@ -45,6 +49,15 @@ class GlobalFeedFragment: Fragment() {
                 R.id.global_feed_openArticle,
                 bundleOf(
                         Pair(resources.getString(R.string.arg_article_id), articleId)
+                )
+        )
+    }
+
+    fun openProfile(username:String){
+        findNavController().navigate(
+                R.id.global_feed_openProfile,
+                bundleOf(
+                        Pair(resources.getString(R.string.arg_username), username)
                 )
         )
     }

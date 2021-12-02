@@ -27,7 +27,7 @@ class MyFeedFragment:Fragment() {
     ): View? {
         articlesList = ArrayList()
         viewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
-        feedAdapter = ArticleFeedAdapter(articlesList){ openArticle(it)}
+        feedAdapter = ArticleFeedAdapter(articlesList, { openArticle(it)}) { openProfile(it) }
 
         binding = FragmentFeedBinding.inflate(inflater, container, false)
 
@@ -51,6 +51,14 @@ class MyFeedFragment:Fragment() {
                 R.id.my_feed_openArticle,
                 bundleOf(
                         Pair(resources.getString(R.string.arg_article_id), articleId)
+                )
+        )
+    }
+    fun openProfile(username:String){
+        findNavController().navigate(
+                R.id.my_feed_openProfile,
+                bundleOf(
+                        Pair(resources.getString(R.string.arg_username), username)
                 )
         )
     }

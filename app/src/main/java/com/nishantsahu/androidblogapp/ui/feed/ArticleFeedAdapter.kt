@@ -11,8 +11,11 @@ import com.nishantsahu.androidblogapp.extensions.loadImage
 import com.nishantsahu.androidblogapp.extensions.timeStamp
 import com.nishantsahu.api.models.entities.Article
 
-class ArticleFeedAdapter(var articlesList:ArrayList<Article>, val onArticleClicked: (slug:String)->Unit)
-    : RecyclerView.Adapter<ArticleFeedAdapter.articleViewHolder>() {
+class ArticleFeedAdapter(
+        var articlesList: ArrayList<Article>,
+        val onArticleClicked: (slug: String) -> Unit,
+        val onProfileClicked : (username:String) -> Unit
+) : RecyclerView.Adapter<ArticleFeedAdapter.articleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): articleViewHolder {
 
@@ -33,7 +36,10 @@ class ArticleFeedAdapter(var articlesList:ArrayList<Article>, val onArticleClick
             articleImageView.loadImage(article.image)
             timeTextView.timeStamp = article.createdAt
 //            authorImageView.loadImage(article.author.image)
-            root.setOnClickListener{onArticleClicked(article.slug)}
+            articleImageViewCard.setOnClickListener{onArticleClicked(article.slug)}
+            titleTextView.setOnClickListener{onArticleClicked(article.slug)}
+            authorImageView.setOnClickListener{onProfileClicked(article.author.username)}
+            authorTextView.setOnClickListener{onProfileClicked(article.author.username)}
         }
 
     }

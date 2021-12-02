@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username HERE"/>
+    <TextView
+        android:id="@+id/imageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="image HERE"/>
+    <TextView
+        android:id="@+id/bioTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bio HERE"/>
+    <TextView
+        android:id="@+id/followingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="following HERE"/>
+
+</LinearLayout>
