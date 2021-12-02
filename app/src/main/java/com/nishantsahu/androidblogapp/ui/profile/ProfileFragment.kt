@@ -1,12 +1,15 @@
 package com.nishantsahu.androidblogapp.ui.profile
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.nishantsahu.androidblogapp.R
 import com.nishantsahu.androidblogapp.databinding.FragmentProfileBinding
 
@@ -39,10 +42,10 @@ class ProfileFragment:Fragment() {
         profileViewModel.profile.observe({lifecycle}){
             binding?.apply {
                 usernameTextView.text = it.username
+                fullNameTextView.text = it.username
                 bioTextView.text = it.bio
-                imageTextView.text = it.image
-                followingTextView.text = it.following.toString()
             }
+//            Glide.with(view.context).load(uri).into(binding!!.profileImageView) TODO
         }
     }
 

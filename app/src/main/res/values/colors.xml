@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_primary">#01080C</color>
-    <color name="color_primary_dark">#192330</color>
-    <color name="color_on_primary">#4D4D57</color>
+    <color name="color_primary_dark">#222529</color>
+    <color name="color_on_primary">#5F5F68</color>
     <color name="color_secondary">#1D45BF</color>
     <color name="color_secondary_dark">#BD154E</color>
     <color name="color_on_secondary">#52b788</color>
     <color name="white">#edf6f9</color>
     <color name="black">#000000</color>
-    <color name="color_lither_grey">#8D979C</color>
+    <color name="color_lither_grey">#909C9C</color>
     <color name="primary_transparent">#5C01080C</color>
-    <color name="color_lither_white">#AFB7D3</color>
+    <color name="color_lither_white">#D3D7DF</color>
 </resources>
